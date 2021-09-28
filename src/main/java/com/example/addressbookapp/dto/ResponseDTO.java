@@ -1,4 +1,4 @@
-package com.example.addressbookapp.model;
+package com.example.addressbookapp.dto;
 
 
 
