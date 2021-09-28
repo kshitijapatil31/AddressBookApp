@@ -59,7 +59,7 @@ public class AddressBookController {
 			@RequestBody AddressBookDTO addressBookDTO) {
 		AddressBookData addressBookData = null;
 
-		addressBookData = addressBookService.updateAddressBookData(addressBookDTO);
+		addressBookData = addressBookService.updateAddressBookData(addressbookId,addressBookDTO);
 		ResponseDTO resDto = new ResponseDTO("update addressbook data:", addressBookData);
 		return new ResponseEntity<ResponseDTO>(resDto, HttpStatus.OK);
 
