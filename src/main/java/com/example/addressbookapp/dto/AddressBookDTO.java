@@ -1,9 +1,14 @@
 package com.example.addressbookapp.dto;
 
+import javax.validation.constraints.Pattern;
+
 public class AddressBookDTO {
 
+	@Pattern(regexp ="^[A-Z]{1}[a-zA-z\\s]{2,}$",message="firstname Invalid")
+
 	public String firstName;
-	public String lastName;
+	@Pattern(regexp ="^[A-Z]{1}[a-zA-z\\s]{2,}$",message="lastname Invalid")
+    public String lastName;
 	public String address;
 	public String city;
 	public String state;
