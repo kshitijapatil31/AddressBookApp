@@ -1,18 +1,28 @@
 package com.example.addressbookapp.service;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.addressbookapp.dto.AddressBookDTO;
 import com.example.addressbookapp.exception.AddressBookException;
 import com.example.addressbookapp.model.AddressBookData;
+import com.example.addressbookapp.repository.AddressBookRepository;
+
+import lombok.extern.slf4j.Slf4j;
 
 
 @Service
+@Slf4j
 public class AddressBookService implements IAddressBookService {
-	 List<AddressBookData> addressBookList=new ArrayList<>();
+	@Autowired
+	AddressBookRepository addressBookRepository;
+	
+	List<AddressBookData> addressBookList=new ArrayList<>();
 	@Override
 	public List<AddressBookData> getAddressBookData() {
 		return addressBookList;
@@ -29,9 +39,10 @@ public class AddressBookService implements IAddressBookService {
 	@Override
 	public AddressBookData createAddressBookData(AddressBookDTO addressbookDTO) {
 		AddressBookData addressbookData=null;
-		addressbookData=new AddressBookData(addressBookList.size()-1,addressbookDTO);
+		addressbookData=new AddressBookData(addressbookDTO);
 		addressBookList.add(addressbookData);
-		return addressbookData;
+		log.debug("AddressBook Data"+addressbookData.toString());
+		return addressBookRepository.save(addressbookData);
 	}
 
 	@Override
