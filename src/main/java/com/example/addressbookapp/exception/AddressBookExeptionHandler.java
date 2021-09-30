@@ -26,6 +26,13 @@ public class AddressBookExeptionHandler {
 	
 	
 	}
+	@ExceptionHandler(AddressBookException.class)
+	public ResponseEntity<ResponseDTO>handleEmployeePayrollException(AddressBookException exception){
+		
+	ResponseDTO responseDto=new ResponseDTO("Exception while prossesing rest request",exception.getMessage());
+	return new ResponseEntity<ResponseDTO>(responseDto , HttpStatus.BAD_REQUEST);
 	
+	
+	}
 
 }
