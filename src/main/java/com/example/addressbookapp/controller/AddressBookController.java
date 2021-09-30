@@ -1,5 +1,7 @@
 package com.example.addressbookapp.controller;
 
+
+
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,12 +19,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.addressbookapp.dto.AddressBookDTO;
+import com.example.addressbookapp.dto.ResponseDTO;
 import com.example.addressbookapp.model.AddressBookData;
 import com.example.addressbookapp.service.IAddressBookService;
-import com.example.addressbookapp.dto.ResponseDTO;
+
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/addressbook")
+@Slf4j
 public class AddressBookController {
 
 	@Autowired
@@ -48,6 +53,7 @@ public class AddressBookController {
 
 	@PostMapping("/create")
 	public ResponseEntity<ResponseDTO> addAddressBookData(@Valid @RequestBody AddressBookDTO addressBookDTO) {
+		log.debug("Addressbook details"+addressBookDTO.toString());
 		AddressBookData addressBookData = null;
 
 		addressBookData = addressBookService.createAddressBookData(addressBookDTO);
