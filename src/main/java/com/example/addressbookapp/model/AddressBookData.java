@@ -1,9 +1,13 @@
 package com.example.addressbookapp.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import com.example.addressbookapp.dto.AddressBookDTO;
-
+@Entity
 public class AddressBookData {
-
+	
+    @Id
 	private int addressBookId;
 	String firstName;
 	String lastName;
